@@ -17,7 +17,7 @@ npm i @waba/js-console-error-interceptor
 ### Executing program
 
 Import and execute the library as shown below in a file that is the starting point of the application.
-# Examples: 
+##### Examples: 
 * index.js/App.js in React
 * main.ts in Angular
 * main.js in Vite, etc
