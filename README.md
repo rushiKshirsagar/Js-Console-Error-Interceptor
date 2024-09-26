@@ -8,31 +8,37 @@ The AI-Driven Console Error Interceptor is a powerful JavaScript library designe
 
 ### Dependencies
 
-* node 16
+- node 16
 
 ### Installing
-````
+
+```
 npm i @waba/js-console-error-interceptor
-````
+```
+
 ### Executing program
 
 Import and execute the library as shown below in a file that is the starting point of the application.
-##### Examples: 
-* index.js/App.js in React
-* main.ts in Angular
-* main.js in Vite, etc
+
+##### Examples:
+
+- index.js/App.js in React
+- main.ts in Angular
+- main.js in Vite, etc
 
 Import
-````
+
+```
 import { overrideConsoleError } from "@waba/js-console-error-interceptor";
-````
+```
 
 Usage
-````
+
+```
 overrideConsoleError();
-````
+```
 
 ## Version History
 
-* 0.1
-    * Initial Release
+- 0.1
+  - Initial Release
