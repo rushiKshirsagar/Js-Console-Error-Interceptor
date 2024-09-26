@@ -38,6 +38,25 @@ Usage
 overrideConsoleError();
 ```
 
+Full main.jsx - Vite
+
+```
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { overrideConsoleError } from "@waba/js-console-error-interceptor";
+
+overrideConsoleError();
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+
+```
+
 ## Version History
 
 - 0.1
