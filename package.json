@@ -1,0 +1,27 @@
+{
+  "name": "@waba/js-console-error-interceptor",
+  "version": "1.0.0",
+  "description": "The AI-Driven Console Error Interceptor is a powerful JavaScript library designed to enhance developer productivity by providing real-time solutions to JavaScript errors directly in the browser console. When an error occurs in the console, this library automatically intercepts the error message and sends it to OpenAI's API for analysis. The library then retrieves an AI-generated solution and displays it beneath the original error message in the console, offering instant guidance to developers on how to resolve the issue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushiKshirsagar/Js-Console-Error-Interceptor.git"
+  },
+  "keywords": [
+    "openAI",
+    "chat",
+    "gpt",
+    "js",
+    "console",
+    "errors"
+  ],
+  "author": "waba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushiKshirsagar/Js-Console-Error-Interceptor/issues"
+  },
+  "homepage": "https://github.com/rushiKshirsagar/Js-Console-Error-Interceptor#readme"
+}
