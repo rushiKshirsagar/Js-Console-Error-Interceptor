@@ -1,8 +1,18 @@
-import { defaultConsoleStyle } from "../constants/console-styling";
-import { agentSetup, prompt, successMessage } from "../constants/gpt-constants";
+import {
+  defaultConsoleStyle,
+  errorConsoleStyle,
+  libraryFailedToLoadMessage,
+  libraryLoadedMessage,
+} from "../constants/console-styling";
+import {
+  agentSetup,
+  gptEndpoint,
+  prompt,
+  successMessage,
+} from "../constants/gpt-constants";
 
 async function fetchSolutionFromOpenAI(errorMessage, apiKey) {
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  const apiEndpoint = gptEndpoint;
 
   const messages = [
     {
@@ -36,10 +46,7 @@ async function fetchSolutionFromOpenAI(errorMessage, apiKey) {
 
 function overrideConsoleError(apiKey) {
   if (apiKey) {
-    console.log(
-      "%cError interceptor library has been loaded and is now monitoring console errors.",
-      defaultConsoleStyle
-    );
+    console.log(libraryLoadedMessage, defaultConsoleStyle);
     const originalConsoleError = console.error;
 
     console.error = async function (...args) {
@@ -68,10 +75,7 @@ function overrideConsoleError(apiKey) {
       }
     };
   } else {
-    console.log(
-      "%cMissing apiKey. Error interceptor library failed to load and is not monitoring console errors.",
-      `${defaultConsoleStyle}; background-color:lightcoral`
-    );
+    console.log(libraryFailedToLoadMessage, errorConsoleStyle);
   }
 }
 
