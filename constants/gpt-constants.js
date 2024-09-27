@@ -1,5 +1,5 @@
 export const agentSetup =
-  "You are a helpful assistant that provides solutions to JavaScript errors. Provide a solution for the following in 100 words.";
+  "You are a helpful assistant that provides solutions to JavaScript errors. Provide a solution for the following in 50 words.";
 
 export const prompt = "Provide a solution for the following JavaScript error:";
 
