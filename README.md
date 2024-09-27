@@ -41,7 +41,7 @@ Usage
 overrideConsoleError(apiKey);
 ```
 
-Full main.jsx - Vite
+main.jsx - Vite
 
 ```
 import { StrictMode } from "react";
@@ -59,7 +59,7 @@ createRoot(document.getElementById("root")).render(
 );
 
 ```
-Full index.html - Vite
+index.html - Vite
 
 ```
 <!DOCTYPE html>
