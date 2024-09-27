@@ -2,7 +2,7 @@ import { defaultConsoleStyle } from "../constants/console-styling";
 import { agentSetup, prompt, successMessage } from "../constants/gpt-constants";
 
 async function fetchSolutionFromOpenAI(errorMessage, apiKey) {
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions"; // Endpoint for GPT-3.5 turbo
+  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
 
   const messages = [
     {
@@ -42,15 +42,13 @@ function overrideConsoleError(apiKey) {
   const originalConsoleError = console.error;
 
   console.error = async function (...args) {
-    // Log the original error
     originalConsoleError(...args);
 
     let errorMessage = "";
     if (args.length > 1) {
-      let formattedString = args[0]; // This is the string with %s placeholders
-      let count = 0; // To keep track of replacements
+      let formattedString = args[0];
+      let count = 0;
 
-      // Replace %s in the string with corresponding elements from the array
       formattedString = formattedString.replace(/%s/g, () => args[++count]);
       errorMessage = formattedString;
     } else {
@@ -58,17 +56,13 @@ function overrideConsoleError(apiKey) {
     }
 
     try {
-      // Fetch the solution from OpenAI API
       const solution = await fetchSolutionFromOpenAI(
         errorMessage.slice(0, 1000),
         apiKey
       );
 
-      // Log the solution after the error
-
       console.log(`%c${successMessage} ${solution}`, defaultConsoleStyle);
     } catch (err) {
-      // In case of an error fetching the solution, log a default message
       console.log(errorMessage);
     }
   };
