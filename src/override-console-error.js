@@ -35,37 +35,44 @@ async function fetchSolutionFromOpenAI(errorMessage, apiKey) {
 }
 
 function overrideConsoleError(apiKey) {
-  console.log(
-    "%cError interceptor library has been loaded and is now monitoring console errors.",
-    defaultConsoleStyle
-  );
-  const originalConsoleError = console.error;
+  if (apiKey) {
+    console.log(
+      "%cError interceptor library has been loaded and is now monitoring console errors.",
+      defaultConsoleStyle
+    );
+    const originalConsoleError = console.error;
 
-  console.error = async function (...args) {
-    originalConsoleError(...args);
+    console.error = async function (...args) {
+      originalConsoleError(...args);
 
-    let errorMessage = "";
-    if (args.length > 1) {
-      let formattedString = args[0];
-      let count = 0;
+      let errorMessage = "";
+      if (args.length > 1) {
+        let formattedString = args[0];
+        let count = 0;
 
-      formattedString = formattedString.replace(/%s/g, () => args[++count]);
-      errorMessage = formattedString;
-    } else {
-      errorMessage = args[0];
-    }
+        formattedString = formattedString.replace(/%s/g, () => args[++count]);
+        errorMessage = formattedString;
+      } else {
+        errorMessage = args[0];
+      }
 
-    try {
-      const solution = await fetchSolutionFromOpenAI(
-        errorMessage.slice(0, 1000),
-        apiKey
-      );
+      try {
+        const solution = await fetchSolutionFromOpenAI(
+          errorMessage.slice(0, 1000),
+          apiKey
+        );
 
-      console.log(`%c${successMessage} ${solution}`, defaultConsoleStyle);
-    } catch (err) {
-      console.log(errorMessage);
-    }
-  };
+        console.log(`%c${successMessage} ${solution}`, defaultConsoleStyle);
+      } catch (err) {
+        console.log(errorMessage);
+      }
+    };
+  } else {
+    console.log(
+      "%cMissing apiKey. Error interceptor library failed to load and is not monitoring console errors.",
+      `${defaultConsoleStyle}; background-color:lightcoral`
+    );
+  }
 }
 
 export default overrideConsoleError;
