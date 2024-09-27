@@ -1,0 +1,54 @@
+name: Publish to npm on Push to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository code
+      - uses: actions/checkout@v4
+
+      # Set up Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install dependencies
+      - run: npm ci
+
+      # Run tests
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository code again (needed for subsequent steps)
+      - uses: actions/checkout@v4
+
+      # Set up Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      # Install dependencies
+      - run: npm ci
+
+      # Increment the version automatically (patch/minor/major based on your preference)
+      - run: npm version patch  # You can use 'minor' or 'major' based on your release type
+
+      # Push the updated version and tags back to the repository
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git push --follow-tags
+
+      # Publish the package to npm
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
