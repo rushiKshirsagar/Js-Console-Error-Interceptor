@@ -4,6 +4,8 @@
 
 The AI-Driven Console Error Interceptor is a powerful JavaScript library designed to enhance developer productivity by providing real-time solutions to JavaScript errors directly in the browser console. When an error occurs in the console, this library automatically intercepts the error message and sends it to OpenAI's API for analysis. The library then retrieves an AI-generated solution and displays it beneath the original error message in the console, offering instant guidance to developers on how to resolve the issue.
 
+This library is still in beta and hasn't been thoroughly tested with all Js frameworks/libraries. If you would like to contribute, writing tests, documentation, handling scenarios, please don't hesitate to raise PRs. 
+
 ![EF587FAD-DDD3-42AE-8F29-B3008B4F533B_1_201_a](https://github.com/user-attachments/assets/599249c5-081d-4bd9-8635-b39fc901ee1e)
 
 ## Getting Started
