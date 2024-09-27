@@ -1,3 +1,3 @@
-import overrideConsoleError from "./src/overrideConsoleError";
+import overrideConsoleError from "./src/override-console-error";
 
 export { overrideConsoleError };
