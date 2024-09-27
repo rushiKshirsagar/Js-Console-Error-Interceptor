@@ -50,7 +50,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { overrideConsoleError } from "@waba/js-console-error-interceptor";
 
-overrideConsoleError();
+overrideConsoleError(apiKey);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
